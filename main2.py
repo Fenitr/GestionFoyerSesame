@@ -142,6 +142,8 @@ def create_users():
                 db.session.add(new_user)
         db.session.commit()
 
+create_user()
+
 def verify_token(token):
     matricule, password = token.split(":")
     user = User.query.filter_by(matricule=matricule).first()
@@ -530,6 +532,3 @@ def get_paiements():
 
     return jsonify(paiements_info), 200
 
-if __name__ == '__main__':
-    create_users()
-    app.run(debug=False, host='0.0.0.0')
